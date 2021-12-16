@@ -1,539 +1,513 @@
 <!DOCTYPE html>
 <html lang="es">
-   <head>
-      <meta charset="utf-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
-      <style>
-         /* PODEMOS IMPORTAR, DE UN VIAJE, DOS FUENTES Y SUS RESPECTIVOS PESOS */
-         @import url("https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400&family=Roboto:ital,wght@0,300;0,400;0,500;1,400&display=swap");
-         /*
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+        <style>
+            /* PODEMOS IMPORTAR, DE UN VIAJE, DOS FUENTES Y SUS RESPECTIVOS PESOS */
+            @import url("https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400&family=Roboto:ital,wght@0,300;0,400;0,500;1,400&display=swap");
+            /*
          Vamos a contradecir a Bootstrap, partiendo con un par de variables
          1) La que define la familia tipográfica que se aplica por defecto
          2) La que define un color que podríamos reutilizar
          */
-         :root {
-         --bs-body-font-family: "Roboto", sans-serif;
-         --bs-primary: #50a545 !important;
-         }
-         a {
-         color: #222;
-         text-decoration: underline;
-         transition: color ease 0.5s;
-         }
-         a:hover {
-         color: var(--bs-primary);
-         text-decoration: none;
-         transition: color ease 0.5s;
-         }
-         /* vamos a ajustar los pesos de algunos títulos a lo que dispone la fuente  */
-         h1,
-         h2,
-         h3,
-         h4 {
-         font-weight: 400;
-         font-family: "PT Serif", serif;
-         }
-         /* vamos a ajustar los pesos de otros títulos y negrita a lo que dispone la fuente  */
-         h5,
-         h6 {
-         font-weight: 700;
-         font-family: "PT Serif", serif;
-         }
-         /* AQUÍ HAGO UN AJUSTE IDIOMÁTICO:  EL GRINGO ENFATIZA CON ITÁLICA. EN CASTELLANO NO LO HACEMOS ASÍ, ENFATIZAMOS CON PESO DE FUENTE, MANTENIENDO UN ESTILO NORMAL */
-         strong,
-         b,
-         em {
-         font-weight: 500;
-         font-style: normal;
-         }
-         /* definiré un tamaño del título de primer nivel (h1) que se ajuste según el viewport width --> https://www.yunbitsoftware.com/blog/2017/06/22/viewport-units-css-que-es/ */
-         h1 {
-         font-size: calc(2rem + 3vw);
-         }
-         /* repetiré el truco anterior con el título de segundo nivel (h2), que, a diferencia del anterior, puedo ocupar varias veces en la misma página */
-         h2 {
-         font-size: calc(0.75rem + 1vw);
-         }
-         /* usaré el ">" entre el título se segundo nive (h2) y el lapso en la misma línea (span) --> https://techbrij.com/css-selector-adjacent-child-sibling */
-         h2 > span {
-         background: var(--bs-primary);
-         color: #fff;
-         }
-         /* sigamos con el título de tercer nivel (h3) */
-         h3 {
-         font-size: calc(1.5rem + 1vw);
-         }
-         span[data-bs-toggle="popover"] {
-         cursor: pointer;
-         }
-         aside {
-         background: linear-gradient(#fff, #e7e8e9);
-         }
-         body {
-         background-image: url(files/fondo-atras.png);
-         background-attachment: fixed;
-         background-size: 100vw auto;
-         background-repeat: no-repeat;
-         }
-         header {
-         padding-top: 60vh;
-         background-image: url("files/fondo-adelante.png");
-         background-attachment: scroll;
-         background-size: 100vw auto;
-         background-repeat: no-repeat;
-         }
-         @media (max-width: 800px) {
-         header {
-         padding-top: 30vh;
-         }
-         }
-         
-         aside{
-            background: linear-gradient(#fff, #e7e8e9);
-         }         
-         
-         /* esto es para que funcione de buena manera la transformación, APERTURA BOCA */
-            #arriba,
-            #abajo {
-                transform-origin: 300px 200px;
-                transform-style: preserve-3D;
-                margin-top: 0px;
-                padding-top: 0px;
-                margin-right: 150px;
+            :root {
+                --bs-body-font-family: "Roboto", sans-serif;
+                --bs-primary: #50a545 !important;
             }
 
-        #arriba{
-               margin-right: 650px;
-               margin-bottom: -40px;
-               margin-left: 400px; 
-               padding-bottom: 0px;
-           } 
+            a {
+                color: #222;
+                text-decoration: underline;
+                transition: color ease 0.5s;
+            }
+            a:hover {
+                color: var(--bs-primary);
+                text-decoration: none;
+                transition: color ease 0.5s;
+            }
+            /* vamos a ajustar los pesos de algunos títulos a lo que dispone la fuente  */
+            h1,
+            h2,
+            h3,
+            h4 {
+                font-weight: 400;
+                font-family: "PT Serif", serif;
+            }
+            /* vamos a ajustar los pesos de otros títulos y negrita a lo que dispone la fuente  */
+            h5,
+            h6 {
+                font-weight: 700;
+                font-family: "PT Serif", serif;
+            }
+            /* AQUÍ HAGO UN AJUSTE IDIOMÁTICO:  EL GRINGO ENFATIZA CON ITÁLICA. EN CASTELLANO NO LO HACEMOS ASÍ, ENFATIZAMOS CON PESO DE FUENTE, MANTENIENDO UN ESTILO NORMAL */
+            strong,
+            b,
+            em {
+                font-weight: 500;
+                font-style: normal;
+            }
+            /* definiré un tamaño del título de primer nivel (h1) que se ajuste según el viewport width --> https://www.yunbitsoftware.com/blog/2017/06/22/viewport-units-css-que-es/ */
+            h1 {
+                font-size: calc(2rem + 3vw);
+            }
+            /* repetiré el truco anterior con el título de segundo nivel (h2), que, a diferencia del anterior, puedo ocupar varias veces en la misma página */
+            h2 {
+                font-size: calc(0.75rem + 1vw);
+            }
+            /* usaré el ">" entre el título se segundo nive (h2) y el lapso en la misma línea (span) --> https://techbrij.com/css-selector-adjacent-child-sibling */
+            h2 > span {
+                background: var(--bs-primary);
+                color: #fff;
+            }
+            /* sigamos con el título de tercer nivel (h3) */
+            h3 {
+                font-size: calc(1.5rem + 1vw);
+            }
+            span[data-bs-toggle="popover"] {
+                cursor: pointer;
+            }
+            aside {
+                background: linear-gradient(#fff, #e7e8e9);
+            }
+            body {
+                background-image: url(files/atras2.png);
+                background-attachment: fixed;
+                background-size: 100vw auto;
+                background-repeat: no-repeat;
+            }
+            header {
+                padding-top: 60vh;
+                background-image: url("files/adelante2.png");
+                background-attachment: scroll;
+                background-size: 100vw auto;
+                background-repeat: no-repeat;
+            }
+            @media (max-width: 800px) {
+                header {
+                    padding-top: 30vh;
+                }
+            }
 
-        
-        
-      </style>
-      <!--ESTO SERVIRÁ PARA COMPARAR UN ANTES Y UN DESPUÉS-->
-      <link href="https://unpkg.com/image-compare-viewer/dist/image-compare-viewer.min.css" rel="stylesheet" />
-      <title>Hipopótamo Pigmeo</title>
-   </head>
-   <body>
-      <!--ESTE ES EL ENCABEZADO-->
-      <header>
-         <div class="container">
-            <div class="row">
-               <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
-                  <h2 class="text-center fst-italic mt-5"><span class="px-2 py-1">Choeropsis Liberiensis</span></h2>
-                  <h1 class="text-center py-3">Hipopótamo Pigmeo</h1>
-                  <!--desde acá la edición de nombres-->
-                  <h6 class="text-center mb-5 text-muted">
-                     Por
-                     <span
-                        data-bs-container="body"
-                        data-bs-toggle="popover"
-                        data-bs-trigger="hover focus"
-                        data-bs-placement="top"
-                        data-bs-content="<div class='text-center'><img src='files/gdonoso.jpg' class='w-50 mb-2 rounded-circle'><br>Gabriela Donoso<br><span class='small text-muted'>Diseñadora Gráfica</span></div>"
-                        >
-                     Gabriela Donoso
-                     </span>
-                     y
-                     <span
-                        data-bs-container="body"
-                        data-bs-toggle="popover"
-                        data-bs-trigger="hover focus"
-                        data-bs-placement="top"
-                        data-bs-content="<div class='text-center'><img src='files/lmedina.jpg' class='w-50 mb-2 rounded-circle'><br>Luis Medina<br><span class='small text-muted'>Diseñador Gráfico</span></div>"
-                        >
-                     Luis Medina
-                     </span>
-                  </h6>
-                  <!--hasta aquí la edición de nombres-->
-                  <p class="lead">
-                     Es un mamífero originario de los bosques y marismas de África Occidental. Su nombre proviene del griego hippos (caballo) y potamos (río), es decir, "Caballo de Río". Junto con el hipopótamo común o anfibio, es
-                     una de las dos únicas especies vivientes de la familia de los hipopotámidos.
-                  </p>
-                  <p>
-                     En 2015, fue declarado como especie en peligro de extinción por la Unión Internacional para la Conservación de la Naturaleza (UICN). Actualmente, solo quedan entre 2.000 y 2.500 ejemplares adultos en su hábitat
-                     natural.
-                  </p>
-                  <div class="row">
-                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 300" class="col-11 col-sm-10 col-md-9 col-lg-8 col-xl-7 col-xxl-6 my-3 mx-auto">
-                        <style type="text/css">
-                           line,
-                           path {
-                           fill: none;
-                           stroke: #777777;
-                           stroke-linecap: round;
-                           }
-                           .blanco {
-                           fill: #ffffff;
-                           font-size: 45px;
-                           }
-                           .gris {
-                           fill: #777777;
-                           font-size: 35px;
-                           }
-                           .no {
-                           fill: #c7c096;
-                           }
-                           .si {
-                           fill: var(--bs-primary);
-                           }
-                        </style>
-                        <g id="ex">
-                           <circle class="no" cx="82.1" cy="228.7" r="46.4" />
-                           <text transform="matrix(1 0 0 1 54 245)" class="blanco">EX</text>
-                        </g>
-                        <g id="ew">
-                           <circle class="no" cx="212.6" cy="228.7" r="46.4" />
-                           <text transform="matrix(1 0 0 1 180 245)" class="blanco">EW</text>
-                        </g>
-                        <g id="cr">
-                           <circle class="no" cx="342.9" cy="228.7" r="46.4" />
-                           <text transform="matrix(1 0 0 1 313 245)" class="blanco">CR</text>
-                        </g>
-                        <g id="en">
-                           <circle class="si" cx="473.6" cy="228.7" r="46.4" />
-                           <text transform="matrix(1 0 0 1 444 245)" class="blanco">EN</text>
-                        </g>
-                        <g id="vu">
-                           <circle class="no" cx="603.8" cy="228.7" r="46.4" />
-                           <text transform="matrix(1 0 0 1 574 245)" class="blanco">VU</text>
-                        </g>
-                        <g id="nt">
-                           <circle class="no" cx="734.1" cy="228.7" r="46.4" />
-                           <text transform="matrix(1 0 0 1 705 245)" class="blanco">NT</text>
-                        </g>
-                        <g id="lc">
-                           <circle class="no" cx="865.6" cy="228.7" r="46.4" />
-                           <text transform="matrix(1 0 0 1 840 245)" class="blanco">LC</text>
-                        </g>
-                        <g id="datos">
-                           <text transform="matrix(1 0 0 1 29.8186 54.2935)" class="gris">Extinto</text>
-                           <text transform="matrix(1 0 0 1 382.5784 54.2935)" class="gris fw-bold">Amenazado</text>
-                           <text transform="matrix(1 0 0 1 760.9694 54.2935)" class="gris">Preocupación</text>
-                           <text transform="matrix(1 0 0 1 812.2867 95.3477)" class="gris">menor</text>
-                           <line class="st6" x1="865.6" y1="119.4" x2="865.6" y2="162.5" />
-                           <line class="st6" x1="82.1" y1="77.9" x2="82.1" y2="162.5" />
-                           <path
-                              class="st6"
-                              d="M279.3,162.5v-55.2c0-6,4.8-10.8,10.8-10.8h161.1c4.4,0,7.9-0.3,10.4-0.9c2.6-0.5,5-1.9,7-3.8 c2.6-3.3,4.1-6,4.3-8.6c0.2,2.6,1.7,5.3,4.3,8.6c2.1,2.1,4.4,3.3,7,3.8c2.6,0.5,6.2,0.9,10.4,0.9h163.2c6,0,10.8,4.8,10.8,10.8v55.2"
-                              />
-                        </g>
-                     </svg>
-                  </div>
-                  <!--Muestra el hipopótamo chico o el grando, pero carga ambos-->
-                  <object data="files/hipo-chico.svg" type="image/svg+xml" class="d-md-none"></object>
-                  <object data="files/hipo-grande.svg" type="image/svg+xml" class="d-none d-md-block"></object>
-                  <!--Se muestra o no por una clase de Bootstrap que responde al ancho de pantalla-->
-               </div>
-            </div>
-         </div>
-      </header>
-      <!--ESTE ES EL CONTENIDO PRINCIPAL, ESTÁ DIVIVIDO EN VARIAS SECCIONES-->
-      <main class="pb-5 bg-white">
+            main{max-width: 100%; overflow-x: hidden;}
 
-        <!--incio card, que serian los circulos verdes-->
-        
-         <div class="row row-cols-1 row-cols-md-3 g-4 mx-5">
-            <div class="col-lg-4 text-center">
-              <div class="card ">
-                
-                <div class="card-body">
-                  <h5 class="card-title"></h5>
-                  <h4 class="alert alert-success">Pérdida de su hábitat natural a causa de la deforestación.</h4>
-                </div>
-                
-              </div>
-            </div>
-            <div class="col-lg-4 text-center">
-              <div class="card h-100">
-                
-                <div class="card-body">
-                  <h5 class="card-title"></h5>
-                  <h4 class="alert alert-success">Falta de protección legal adecuada para su conservación.</h4>
-                </div>
-                
-              </div>
-            </div>
-            <div class="col-lg-4 text-center">
-              <div class="card h-100">
-                
-                <div class="card-body">
-                  <h5 class="card-title"></h5>
-                  <h4 class="alert alert-success">Caza furtiva para comercialización de su piel y carne.</h4>
-                </div>
-               
-              </div>
-            </div>
-          </div>
+            aside {
+                background: linear-gradient(#fff, #e7e8e9);
+            }
 
-<!--Esperanza de vida-->
-          <section class="container" id="seccion_esperanza">
-            <div class="row">
-               <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
-                  <h3 class="text-center mt-5 mb-3"></h3>
-                  <img src="files/esperanza_vida.svg" alt="esperanza de vida" class="w-100"/>
-                  <p>Solo quedan entre 2.000 y 2.500 ejemplares adultos en su hábitat natural.</p>
-               </div>
-            </div>
-          </section>
-
-
-         <section class="container" id="buin">
-            <div class="row">
-               <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
-                  <h3 class="text-center mt-5 mb-3">En nuestro país</h3>
-                  <img src="files/buin.svg" alt="buin" class="w-100"/>
-                  <p>Buin Zoo es el hogar de la única familia de hipopótamos pigmeos de Chile. Desde 2011, han celebrado el nacimiento de 4 crías de la especie, y contribuyen a la conservación de esta en otros lugares del mundo.</p>
-               </div>
-            </div>
-         </section>
-
-         <section class="container" id="buin">
-            <div class="row">
-               <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
-                  <h3 class="text-center mt-5 mb-3">Reproducción</h3>
-                  <img src="files/reproduccion.svg" alt="buin" class="w-100"/>
-                  <p>La cópula puede ocurrir tanto en tierra como en el agua, a diferencia del nacimiento que es siempre en tierra.</p>
-               </div>
-            </div>
-         </section>
-
-
-
-         <!--SECCIÓN MAPA-->
-         <section class="container" id="seccion_mapa">
-            <div class="row">
-               <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
-                  <h3 class="text-center mt-5 mb-3">¿De dónde viene?</h3>
-                  <img src="files/mapa-origen.jpg" alt="este es el mapa de ubicación" class="w-100"/>
-                  <p>*Aquí se encuentra la mayor cantidad de hipopótamos pigmeos en estado salvaje.</p>
-               </div>
-            </div>
-         </section>
-         <!--SECCIÓN COMPARATIVA-->
-         <section class="container" id="seccion_comparativa">
-            <div class="row">
-               <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
-                  <h3 class="text-center mt-5 mb-3">Pequeños, pero pesados</h3>
-                  <object data="files/grafico-tamanos.svg" type="image/svg+xml" class="my-3"></object>
-                  <p>Puede llegar a pesar entre <em>160 a 270 kg;</em> un tercio del Hipopótamo Común. La hembra suele ser más grande y pesada que el macho.</p>
-               </div>
-            </div>
-         </section>
-         <!--SECCIÓN YUXTAPUESTA-->
-         <section class="container" id="seccion_yuxtapuesta">
-            <div class="row">
-               <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
-                  <h3 class="text-center mt-5 mb-3">Su anatomía</h3>
-                  <div id="yuxtaposicion" class="my-3">
-                     <img src="files/hipo-antes.jpg" alt="este es un hipopótamo pigmeo" />
-                     <img src="files/hipo-despues.jpg" alt="así se ve su interior" />
-                  </div>
-                  <p>
-                     Este es un lorem ipsum dolor sit amet, consectetur adipiscing elit. Pero no es un loren ipsum para papel, es para pantalla, donde
-                     <a href="https://www.nngroup.com/articles/how-users-read-on-the-web/" target="_blank" title="How Users Read on the Web">es recomendable</a> <em>destacar palabras clave</em>, ofrecer
-                     <a href="https://www.nngroup.com/videos/plain-language-for-experts/" target="_blank" title="Plain Language For Everyone, Even Experts">una idea por párrafo</a> (que sea clara para
-                     <a href="https://www.nngroup.com/videos/biggest-mistake-writing-web/" target="_blank" title="The Biggest Mistake in Writing for the Web">tu público objetivo</a>) y usar el estilo de pirámide invertida (incluyendo
-                     en cada pirámide lo que se acaba de <a href="https://youtu.be/iEB3oILm-qQ?t=2063" target="_blank" title="Charla del Dr. Mario García">mostrar o se mostrará</a> a continuación).
-                  </p>
-               </div>
-            </div>
-         </section>
-         <!--SECCIÓN VIDEO PRUEBA 1 CENTRADO EN COLUMNAS-->
-         <section class="container" id="seccion_yuxtapuesta">
-            <div class="row">
-               <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
-                  <h3 class="text-center mt-5 mb-3">Prueba video 1 (centrado)</h3>
-                  <div id="video" class="my-3">
-                     <div class="ratio ratio-16x9">
-                        <iframe src="https://www.youtube.com/embed/TEq7F6PX5DE" title="YouTube video" allowfullscreen></iframe>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </section>
-         <section>
+            /* esto es para que funcione de buena manera la transformación */
+            #arriba,
+            #abajo {
+                transform-origin: 350px 310px;
+                transform-style: preserve-3D;
+            }
+        </style>
+        <!--ESTO SERVIRÁ PARA COMPARAR UN ANTES Y UN DESPUÉS-->
+        <link href="https://unpkg.com/image-compare-viewer/dist/image-compare-viewer.min.css" rel="stylesheet" />
+        <title>Hipopótamo Pigmeo</title>
+    </head>
+    <body>
+        <!--ESTE ES EL ENCABEZADO-->
+        <header>
             <div class="container">
-               <div class="row">
-                  <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
-                     <h3 class="text-center mt-5 mb-3">Prueba video 2 (ancho)</h3>
-                  </div>
-               </div>
-            </div>
-            <div class="ratio ratio-16x9">
-               <iframe src="https://www.youtube.com/embed/TEq7F6PX5DE" title="YouTube video" allowfullscreen></iframe>
-            </div>
-         </section>
-         <!--SECCIÓN ANCHA-->
-         <section id="seccion_ancha">
-            <div class="container-fluid g-0">
-               <div class="row g-0">
-                  <div class="col-12">
-                     <h3 class="text-center my-3">Sección Ancha</h3>
-                     <!--VAMOS A INCLUIR TRES SVG EN UN CARRUSEL-->
-                     <div id="carruselConMapa" class="carousel carousel-dark slide carousel-fade" data-bs-ride="carousel">
-                        <div class="carousel-indicators">
-                           <button type="button" data-bs-target="#carruselConMapa" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                           <button type="button" data-bs-target="#carruselConMapa" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                           <button type="button" data-bs-target="#carruselConMapa" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                <div class="row">
+                    <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
+                        <h2 class="text-center fst-italic mt-5"><span class="px-2 py-1">Choeropsis Liberiensis</span></h2>
+                        <h1 class="text-center py-3">Hipopótamo Pigmeo</h1>
+                        <!--desde acá la edición de nombres-->
+                        <h6 class="text-center mb-5 text-muted">
+                            Por
+                            <span
+                                data-bs-container="body"
+                                data-bs-toggle="popover"
+                                data-bs-trigger="hover focus"
+                                data-bs-placement="top"
+                                data-bs-content="<div class='text-center'><img src='files/gdonoso.jpg' class='w-50 mb-2 rounded-circle'><br>Gabriela Donoso<br><span class='small text-muted'>Diseñadora Gráfica</span></div>"
+                            >
+                                Gabriela Donoso
+                            </span>
+                            y
+                            <span
+                                data-bs-container="body"
+                                data-bs-toggle="popover"
+                                data-bs-trigger="hover focus"
+                                data-bs-placement="top"
+                                data-bs-content="<div class='text-center'><img src='files/lmedina.jpg' class='w-50 mb-2 rounded-circle'><br>Luis Medina<br><span class='small text-muted'>Diseñador Gráfico</span></div>"
+                            >
+                                Luis Medina
+                            </span>
+                        </h6>
+                        <!--hasta aquí la edición de nombres-->
+                        <p class="lead">
+                            Es un mamífero originario de los bosques y marismas de África Occidental. Su nombre proviene del griego hippos (caballo) y potamos (río), es decir, "Caballo de Río". Junto con el hipopótamo común o anfibio, es
+                            una de las dos únicas especies vivientes de la familia de los hipopotámidos.
+                        </p>
+                        <p>
+                            En 2015, fue declarado como especie en peligro de extinción por la Unión Internacional para la Conservación de la Naturaleza (UICN). Actualmente, solo quedan entre 2.000 y 2.500 ejemplares adultos en su hábitat
+                            natural.
+                        </p>
+                        <div class="row">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 300" class="col-11 col-sm-10 col-md-9 col-lg-8 col-xl-7 col-xxl-6 my-3 mx-auto">
+                                <style type="text/css">
+                                    line,
+                                    path {
+                                        fill: none;
+                                        stroke: #777777;
+                                        stroke-linecap: round;
+                                    }
+                                    .blanco {
+                                        fill: #ffffff;
+                                        font-size: 45px;
+                                    }
+                                    .gris {
+                                        fill: #777777;
+                                        font-size: 35px;
+                                    }
+                                    .no {
+                                        fill: #c7c096;
+                                    }
+                                    .si {
+                                        fill: var(--bs-primary);
+                                    }
+                                </style>
+                                <g id="ex">
+                                    <circle class="no" cx="82.1" cy="228.7" r="46.4" />
+                                    <text transform="matrix(1 0 0 1 54 245)" class="blanco">EX</text>
+                                </g>
+                                <g id="ew">
+                                    <circle class="no" cx="212.6" cy="228.7" r="46.4" />
+                                    <text transform="matrix(1 0 0 1 180 245)" class="blanco">EW</text>
+                                </g>
+                                <g id="cr">
+                                    <circle class="no" cx="342.9" cy="228.7" r="46.4" />
+                                    <text transform="matrix(1 0 0 1 313 245)" class="blanco">CR</text>
+                                </g>
+                                <g id="en">
+                                    <circle class="si" cx="473.6" cy="228.7" r="46.4" />
+                                    <text transform="matrix(1 0 0 1 444 245)" class="blanco">EN</text>
+                                </g>
+                                <g id="vu">
+                                    <circle class="no" cx="603.8" cy="228.7" r="46.4" />
+                                    <text transform="matrix(1 0 0 1 574 245)" class="blanco">VU</text>
+                                </g>
+                                <g id="nt">
+                                    <circle class="no" cx="734.1" cy="228.7" r="46.4" />
+                                    <text transform="matrix(1 0 0 1 705 245)" class="blanco">NT</text>
+                                </g>
+                                <g id="lc">
+                                    <circle class="no" cx="865.6" cy="228.7" r="46.4" />
+                                    <text transform="matrix(1 0 0 1 840 245)" class="blanco">LC</text>
+                                </g>
+                                <g id="datos">
+                                    <text transform="matrix(1 0 0 1 29.8186 54.2935)" class="gris">Extinto</text>
+                                    <text transform="matrix(1 0 0 1 382.5784 54.2935)" class="gris fw-bold">Amenazado</text>
+                                    <text transform="matrix(1 0 0 1 760.9694 54.2935)" class="gris">Preocupación</text>
+                                    <text transform="matrix(1 0 0 1 812.2867 95.3477)" class="gris">menor</text>
+                                    <line class="st6" x1="865.6" y1="119.4" x2="865.6" y2="162.5" />
+                                    <line class="st6" x1="82.1" y1="77.9" x2="82.1" y2="162.5" />
+                                    <path
+                                        class="st6"
+                                        d="M279.3,162.5v-55.2c0-6,4.8-10.8,10.8-10.8h161.1c4.4,0,7.9-0.3,10.4-0.9c2.6-0.5,5-1.9,7-3.8 c2.6-3.3,4.1-6,4.3-8.6c0.2,2.6,1.7,5.3,4.3,8.6c2.1,2.1,4.4,3.3,7,3.8c2.6,0.5,6.2,0.9,10.4,0.9h163.2c6,0,10.8,4.8,10.8,10.8v55.2"
+                                    />
+                                </g>
+                            </svg>
                         </div>
-                        <div class="carousel-inner">
-                           <div class="carousel-item active" data-bs-interval="1000">
-                              <object class="d-block w-100" data="files/mapa-1.svg" type="image/svg+xml"></object>
-                              <div class="carousel-caption">
-                                 <h5>1950</h5>
-                              </div>
-                           </div>
-                           <div class="carousel-item" data-bs-interval="1000">
-                              <object class="d-block w-100" data="files/mapa-2.svg" type="image/svg+xml"></object>
-                              <div class="carousel-caption">
-                                 <h5>1970</h5>
-                              </div>
-                           </div>
-                           <div class="carousel-item" data-bs-interval="1000">
-                              <object class="d-block w-100" data="files/mapa-3.svg" type="image/svg+xml"></object>
-                              <div class="carousel-caption">
-                                 <h5>2000</h5>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <div class="container">
-               <div class="row">
-                  <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto my-5">
-                     <p>
-                        Este es un lorem ipsum dolor sit amet, consectetur adipiscing elit. Pero no es un loren ipsum para papel, es para pantalla, donde
-                        <a href="https://www.nngroup.com/articles/how-users-read-on-the-web/" target="_blank" title="How Users Read on the Web">es recomendable</a> <em>destacar palabras clave</em>, ofrecer
-                        <a href="https://www.nngroup.com/videos/plain-language-for-experts/" target="_blank" title="Plain Language For Everyone, Even Experts">una idea por párrafo</a> (que sea clara para
-                        <a href="https://www.nngroup.com/videos/biggest-mistake-writing-web/" target="_blank" title="The Biggest Mistake in Writing for the Web">tu público objetivo</a>) y usar el estilo de pirámide invertida
-                        (incluyendo en cada pirámide lo que se acaba de <a href="https://youtu.be/iEB3oILm-qQ?t=2063" target="_blank" title="Charla del Dr. Mario García">mostrar o se mostrará</a> a continuación).
-                     </p>
-                  </div>
-               </div>
-            </div>
-         </section>
-         <section class="container">
-            <div class="row">
-               <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
-                  <h4 class="text-center mt-5 mb-3">Seccíon extra</h4>
-                  <p>
-                     Este es un lorem ipsum dolor sit amet, consectetur adipiscing elit. Pero no es un loren ipsum para papel, es para pantalla, donde
-                     <a href="https://www.nngroup.com/articles/how-users-read-on-the-web/" target="_blank" title="How Users Read on the Web">es recomendable</a> <em>destacar palabras clave</em>, ofrecer
-                     <a href="https://www.nngroup.com/videos/plain-language-for-experts/" target="_blank" title="Plain Language For Everyone, Even Experts">una idea por párrafo</a> (que sea clara para
-                     <a href="https://www.nngroup.com/videos/biggest-mistake-writing-web/" target="_blank" title="The Biggest Mistake in Writing for the Web">tu público objetivo</a>) y usar el estilo de pirámide invertida (incluyendo
-                     en cada pirámide lo que se acaba de <a href="https://youtu.be/iEB3oILm-qQ?t=2063" target="_blank" title="Charla del Dr. Mario García">mostrar o se mostrará</a> a continuación).
-                  </p>
-               </div>
-            </div>
-         </section>
-
-<!--APERTURA BOCA HIPOPOTAMO-->
-         <div class="container" >
-            <div class="row">
-                <div class="col-12 pt-4">
-                    <h3 class="text-center">Ángulo de apertura del hocico</h3>
-                    <p class="text-center mt-2 mb-3">Su boca tiene solo un par de incisivos superiores, y su mandíbula inferior se sostiene de la parte posterior del cráneo, por lo que puede abrirla en 150°.</p>
-                    <div class="row py-5">
-                        <div class="col-2 text-center">0º</div>
-                        <div class="col-8 text-center">
-                            <input type="range" class="form-range" min="0" max="30" step="0.5" id="rango" value="0" />
-                        </div>
-                        <div class="col-2 text-center">120º</div>
+                        <!--Muestra el hipopótamo chico o el grando, pero carga ambos-->
+                        <object data="files/hipo-chico.svg" type="image/svg+xml" class="d-md-none w-100"></object>
+                        <object data="files/hipo-grande.svg" type="image/svg+xml" class="d-none d-md-block w-100"></object>
+                        <!--Se muestra o no por una clase de Bootstrap que responde al ancho de pantalla-->
                     </div>
                 </div>
-                <div class="col-12 text-center">Ángulo de <span id="actual"></span>º</div>
-                <div class="col-12 text-center my-5">
+            </div>
+        </header>
+        <!--ESTE ES EL CONTENIDO PRINCIPAL, ESTÁ DIVIVIDO EN VARIAS SECCIONES-->
+        <main class="bg-white">
+            <!--INICIO DE SECCIÓN CON MOTIVOS-->
+            <section class="container">
+                <div class="row align-items-stretch g-4 mx-5">
+                    <div class="col-lg-12 text-center">
+                        <h4 class="text-center mt-5 mb-2">Razones para su peligro de extinción</h4>
+                    </div>
 
-                  <object data="files/hipo_arriba.svg" type="image/svg+xml"  width="300px" height="auto" id="arriba"></object>
-                  <object data="files/hipo_abajo.svg" type="image/svg+xml" width="300px" height="auto" id="abajo"></object>
-                    
-               
+                    <div class="col-lg-4 text-center">
+                        <div class="alert alert-success"><h6 class="m-0 p-0">Pérdida de su hábitat natural a causa de la deforestación.</h6></div>
+                    </div>
+                    <div class="col-lg-4 text-center">
+                        <div class="alert alert-success"><h6 class="m-0 p-0">Falta de protección legal adecuada para su conservación.</h6></div>
+                    </div>
+                    <div class="col-lg-4 text-center">
+                        <div class="alert alert-success"><h6 class="m-0 p-0">Caza furtiva para comercialización de su piel y carne.</h6></div>
+                    </div>
+                </div>
+            </section>
+            <!--FINAL DE SECCIÓN CON MOTIVOS-->
+
+            <!--INICIO DE SECCIÓN CON GRÁFICO-->
+
+            <section class="container">
+                <div class="row">
+                    <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto text-center">
+                        <h4 class="text-center mt-5 mb-2">Esperanza de vida</h4>
+                        <img src="files/esperanza_vida.svg" alt="esperanza de vida" class="w-75 mx-auto" />
+                        <p>Solo quedan entre 2.000 y 2.500 ejemplares adultos en su hábitat natural.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!--FIN DE SECCIÓN CON GRÁFICO-->
+
+            <!--INICIO DE SECCIÓN CON MAPA-->
+            <section class="container" id="seccion_mapa">
+                <div class="row">
+                    <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto text-center">
+                        <h4 class="mt-5 mb-2">Su hábitat en estado silvestre</h4>
+                        <img src="files/mapa-origen.jpg" alt="este es el mapa de ubicación" class="w-100" />
+                        <p>*Aquí se encuentra la mayor cantidad de hipopótamos pigmeos en estado silvestre.</p>
+                    </div>
+                </div>
+            </section>
+            <!--FINAL DE SECCIÓN CON MAPA-->
+
+            <!--INICIO DE SECCIÓN CON ARBOL GENEALÓGICO-->
+            <section class="container" id="buin">
+                <div class="row">
+                    <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto text-center">
+                        <h4 class="mt-5 mb-3">Cautiverio en Chile</h4>
+                        <img src="files/buin.svg" alt="buin" class="w-75 mx-auto" />
+                        <p class="text-start">
+                            Buin Zoo es el hogar de la única familia de hipopótamos pigmeos de Chile. Desde 2011, han celebrado el nacimiento de 4 crías de la especie, y contribuyen a la conservación de esta en otros lugares del mundo.
+                        </p>
+                    </div>
+                </div>
+            </section>
+            <!--FINAL DE SECCIÓN CON ARBOL GENEALÓGICO-->
+
+            <!--INICIO DE SECCIÓN DE REPRODUCCIÓN-->
+
+            <section class="container" id="buin">
+                <div class="row">
+                    <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
+                        <h3 class="text-center mt-5 mb-2">Reproducción</h3>
+                        <img src="files/reproduccion.svg" alt="buin" class="w-100" />
+                        <p>La cópula puede ocurrir tanto en tierra como en el agua, a diferencia del nacimiento que es siempre en tierra.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!--FINAL DE SECCIÓN DE REPRODUCCIÓN-->
+
+            <!--INICIO DE SECCIÓN COMPARATIVA-->
+            <section class="container">
+                <div class="row">
+                    <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
+                        <h3 class="text-center mt-5 mb-3">Pequeños, pero pesados</h3>
+                        <object data="files/grafico-tamanos.svg" type="image/svg+xml" class="my-3"></object>
+                        <p>Puede llegar a pesar entre <em>160 a 270 kg;</em> un tercio del Hipopótamo Común. La hembra suele ser más grande y pesada que el macho.</p>
+                    </div>
+                </div>
+            </section>
+            <!--FINAL DE SECCIÓN COMPARATIVA-->
+
+            <!--INICIO DE SECCIÓN YUXTAPUESTA-->
+            <section class="container" id="seccion_yuxtapuesta">
+                <div class="row">
+                    <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
+                        <h3 class="text-center mt-5 mb-3">Su anatomía</h3>
+                        <div id="yuxtaposicion" class="my-3 mx-auto">
+                            <img src="files/hipo-antes.jpg" alt="este es un hipopótamo pigmeo" />
+                            <img src="files/hipo-despues.jpg" alt="así se ve su interior" />
+                        </div>
+                        <p>
+                            Este es un lorem ipsum dolor sit amet, consectetur adipiscing elit. Pero no es un loren ipsum para papel, es para pantalla, donde
+                            <a href="https://www.nngroup.com/articles/how-users-read-on-the-web/" target="_blank" title="How Users Read on the Web">es recomendable</a> <em>destacar palabras clave</em>, ofrecer
+                            <a href="https://www.nngroup.com/videos/plain-language-for-experts/" target="_blank" title="Plain Language For Everyone, Even Experts">una idea por párrafo</a> (que sea clara para
+                            <a href="https://www.nngroup.com/videos/biggest-mistake-writing-web/" target="_blank" title="The Biggest Mistake in Writing for the Web">tu público objetivo</a>) y usar el estilo de pirámide invertida (incluyendo
+                            en cada pirámide lo que se acaba de <a href="https://youtu.be/iEB3oILm-qQ?t=2063" target="_blank" title="Charla del Dr. Mario García">mostrar o se mostrará</a> a continuación).
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!--FINAL DE SECCIÓN COMPARATIVA-->
+
+            <!--DESDE AQUÍ VIDEO AJUSTADO A ANCHO DE FILA-->
+            <section class="container">
+                <div class="row">
+                    <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
+                        <h3 class="text-center mt-5 mb-3">Descúbrelos en acción</h3>
+                        <div id="video" class="my-3">
+                            <div class="ratio ratio-16x9">
+                                <iframe src="https://www.youtube.com/embed/5wno_D64VAk" title="Hipopótamos pigmeos" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!--HASTA AQUÍ VIDEO AJUSTADO A ANCHO DE FILA-->
+
+            <!--DESDE AQUÍ VIDEO ANCHO-->
+            <section>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
+                            <h3 class="text-center mt-5 mb-3">Descúbrelos en acción</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="ratio ratio-16x9">
+                    <iframe src="https://www.youtube.com/embed/5wno_D64VAk" title="Hipopótamos pigmeos" allowfullscreen></iframe>
+                </div>
+            </section>
+            <!--HASTA AQUÍ VIDEO ANCHO-->
+
+            <!--DESDE AQUÍ BOCA HIPOPOTAMO-->
+            <section class="container">
+                <div class="row">
+                    <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto my-5">
+                        <h3 class="text-center">Ángulo de apertura del hocico</h3>
+                        <p class="text-center mt-2 mb-3">Su boca tiene solo un par de incisivos superiores, y su mandíbula inferior se sostiene de la parte posterior del cráneo, por lo que puede abrirla en 150°.</p>
+
+                        <div class="row">
+                            <div class="col-12 text-center bg-light">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 600" class="w-100">
+                                    <image href="files/hipo_abajo_350x200.svg" x="50" y="210" height="200" width="350" id="abajo" />
+                                    <image href="files/hipo_arriba_350x200.svg" x="50" y="110" height="220" width="350" id="arriba" />
+                                </svg>
+                            </div>
+
+                            <div class="col-6 mx-auto">
+                                <div class="row py-3">
+                                    <div class="col-2 text-center">0º</div>
+                                    <div class="col-8 text-center">
+                                        <input type="range" class="form-range" min="0" max="75" step="1" id="rango" value="0" />
+                                    </div>
+                                    <div class="col-2 text-center">150º</div>
+                                </div>
+                            </div>
+                            <div class="col-12 text-center">Ángulo de <span id="actual" class="fw-bold"></span>º</div>
+                            <script>
+                                const dato = document.getElementById("rango");
+                                const info = document.getElementById("actual");
+                                const mandibulafloja = document.getElementById("arriba");
+                                const mandibulafuerte = document.getElementById("abajo");
+
+                                var angulo;
+
+                                dato.onchange = function () {
+                                    angulo = dato.value;
+                                    console.log(angulo);
+                                    info.innerHTML = angulo * 2;
+                                    //a continuación se define la transformación
+                                    mandibulafloja.style.transform = "rotate(" + angulo + "deg)";
+                                    mandibulafuerte.style.transform = "rotate(-" + angulo + "deg)";
+                                };
+                                dato.onchange();
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!--HASTA AQUÍ BOCA HIPOPOTAMO-->
+        </main>
+        <!--ESTE ES EL PIE DE PÁGINA-->
+        <aside>
+            <div class="container small text-center">
+                <div class="row py-5">
+                    <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
+                        <h5 class="fs-6 mb-3">Fuentes</h5>
+                        <p>
+                            <a href="https://www.iucnredlist.org/species/10032/18567171">International Union for Conservation of Nature</a> &bull; <a href="https://ibream.org/wp-content/uploads/2018/07/Flacke_PhD-Thesis_18-Oct-2016.pdf">University of Western Australia</a> &bull;
+                            <a href="https://www.hipposg.org/studbooks/">Pygmy Hippo Studbooks</a> &bull; <a href="https://youtu.be/k5Exl8UblXg">Buin Zoo</a>
+                        </p>
+                        <p><em>Agradecimientos a</em> Buin Zoo, por su gentileza en la entrega de información sobre esta especie, y al equipo docente del Diplomado de Infografía de la Pontificia Universidad Católica, por levantar este significativo proyecto y acompañarnos en su desarrollo. </p>
+                        <h5 class="fs-6 mt-5 mb-3">Versión impresa</h5>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#modalImpreso">
+                            <img src="files/impresa.jpg" class="w-50 shadow-sm mb-5" alt="infografía impresa pequeña" />
+                        </a>
+                        <div class="modal fade" id="modalImpreso" tabindex="-1" aria-hidden="true">
+                            <div class="modal-dialog modal-fullscreen">
+                                <img src="files/impresa.jpg" class="w-100" alt="infografía impresa grande" />
+                            </div>
+                        </div>
+                        <p class="small">
+                            <em><a href="https://www.diplomadodeinfografia.cl/" class="link-dark" target="_blank">Diplomado de Infografía</a> &bull; 2021</em><br />
+                            Escuela de Diseño de la Pontificia Universidad Católica de Chile<br />
+                        </p>
+                    </div>
                 </div>
             </div>
-            </div>
-        </div>
-
-        <script>
-            const dato = document.getElementById("rango");
-            const info = document.getElementById("actual");
-            const mandibulafloja = document.getElementById("arriba");
-            const mandibulafuerte = document.getElementById("abajo");
-
-            var angulo;
-
-            dato.onchange = function () {
-                angulo = dato.value;
-                console.log(angulo);
-                info.innerHTML = angulo * 4;
-                //a continuación se define la transformación
-                mandibulafloja.style.transform = "rotate(" + angulo * 2 + "deg)";
-                mandibulafuerte.style.transform = "rotate(-" + angulo * 2 + "deg)";
-            };
-            dato.onchange();
-        </script>
-
-        <!--CIERRE APERTURA BOCA-->
-
-
-      </main>
-      <!--ESTE ES EL PIE DE PÁGINA-->
-      <aside>
-         <div class="container small text-center">
-            <div class="row py-5">
-               <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
-                  <h5 class="fs-6 mb-3">Fuentes</h5>
-                  <p>
-                     <a href="http://visibleearth.nasa.gov/view.php?id=40173">NASA Visible Earth</a> &bull; <a href="http://orbitaldebris.jsc.nasa.gov/">NASA Orbital Debris Program Office</a> &bull;
-                     <a href="http://www.ucsusa.org/">UCS Union of Concerned Scientics</a> &bull; <a href="http://www.jpl.nasa.gov/">NASA Jet Propulsion Laboratory</a> &bull; <a href="#">SSN (U.S. Space Surveillance Network)</a>
-                  </p>
-                  <p><em>Agradecimientos a</em> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum fringilla lorem nec tristique varius. Fusce egestas ullamcorper lorem et consequat.</p>
-                  <h5 class="fs-6 mt-5 mb-3">Versión impresa</h5>
-                  <a href="#" data-bs-toggle="modal" data-bs-target="#modalImpreso">
-                  <img src="files/impresa.jpg" class="w-50 shadow-sm mb-5" alt="infografía impresa pequeña" />
-                  </a>
-                  <div class="modal fade" id="modalImpreso" tabindex="-1" aria-hidden="true">
-                     <div class="modal-dialog modal-fullscreen">
-                        <img src="files/impresa.jpg" class="w-100" alt="infografía impresa grande" />
-                     </div>
-                  </div>
-                  <p class="small">
-                     <em><a href="https://www.diplomadodeinfografia.cl/" class="link-dark" target="_blank">Diplomado de Infografía</a> &bull; 2021</em><br />
-                     Escuela de Diseño de la Pontificia Universidad Católica de Chile<br />
-                  </p>
-               </div>
-            </div>
-         </div>
-         <div class="bg-light">
-            <div class="container py-5">
-               <div class="row">
-                  <h4 class="col-12 mb-4 text-center">También te puede interesar</h4>
-               </div>
-               <div class="row g-4" id="colegas"></div>
+            <div class="bg-light">
+                <div class="container py-5">
+                    <div class="row">
+                        <h4 class="col-12 mb-4 text-center">También te puede interesar</h4>
+                    </div>
+                    <div class="row g-4" id="colegas"></div>
                     <script>
-                       const colegas = document.getElementById("colegas");
-                       const datos = [
-                          { especie: "Gibón de manos blancas", imagen: "https://raw.githubusercontent.com/profesorfaco/infografia/main/thumbnails/gibon.jpg", descripcion: "el danzarín del bosque.", url: "https://gibon-de-manos-blancas.github.io/avance/" },
-                          { especie: "Grulla de cuello blanco", imagen: "https://raw.githubusercontent.com/profesorfaco/infografia/main/thumbnails/grulla.jpg", descripcion: "un viajera romántica.", url: "https://grulla-de-cuello-blanco.github.io/avance" },
-                          { especie: "Hipopótamo pigmeo", imagen: "https://raw.githubusercontent.com/profesorfaco/infografia/main/thumbnails/hipopotamo.jpg", descripcion: "un pequeño caballo de río.", url: "https://hipopotamo-pigmeo.github.io/avance" },
-                          { especie: "Panda rojo", imagen: "https://raw.githubusercontent.com/profesorfaco/infografia/main/thumbnails/panda.jpg", descripcion: "el animal más lindo del mundo.", url: "https://infografia-panda-rojo.github.io/avance" },
-                          { especie: "Lemur de cola anillada", imagen: "https://raw.githubusercontent.com/profesorfaco/infografia/main/thumbnails/lemur.jpg", descripcion: "el zorrillo de Madagascar.", url: "https://lemur-cola-anillada.github.io/avance" },
-                          { especie: "Orangután de borneo", imagen: "https://raw.githubusercontent.com/profesorfaco/infografia/main/thumbnails/orangutan.jpg", descripcion: "el hombre del bosque.", url: "https://orangutan-borneo-uc.github.io/avance" },
-                          { especie: "Oso malayo", imagen: "https://raw.githubusercontent.com/profesorfaco/infografia/main/thumbnails/oso.jpg", descripcion: "el oso más pequeño.", url: "https://oso-malayo.github.io/avance" },
-                          { especie: "Siamang", imagen: "https://raw.githubusercontent.com/profesorfaco/infografia/main/thumbnails/siamang.jpg", descripcion: "el acróbata de la selva.", url: "https://siamang-infografia.github.io/avance" },
-                          { especie: "Tapir amazónico", imagen: "https://raw.githubusercontent.com/profesorfaco/infografia/main/thumbnails/tapir.jpg", descripcion: "el jardinero de la selva.", url: "https://tapir-amazonico.github.io/avance" },
-                          { especie: "Tigre de bengala", imagen: "https://raw.githubusercontent.com/profesorfaco/infografia/main/thumbnails/tigre.jpg", descripcion: "el felino más grande del mundo.", url: "https://tigre-de-bengala.github.io/avance/" }
-                       ];
-                       datos.forEach((d) => {
-                            if(d.especie != "Hipopótamo pigmeo"){
+                        const colegas = document.getElementById("colegas");
+                        const datos = [
+                            {
+                                especie: "Gibón de manos blancas",
+                                imagen: "https://raw.githubusercontent.com/profesorfaco/infografia/main/thumbnails/gibon.jpg",
+                                descripcion: "el danzarín del bosque.",
+                                url: "https://gibon-de-manos-blancas.github.io/final/",
+                            },
+                            {
+                                especie: "Grulla de cuello blanco",
+                                imagen: "https://raw.githubusercontent.com/profesorfaco/infografia/main/thumbnails/grulla.jpg",
+                                descripcion: "un viajera romántica.",
+                                url: "https://grulla-de-cuello-blanco.github.io/final",
+                            },
+                            {
+                                especie: "Hipopótamo pigmeo",
+                                imagen: "https://raw.githubusercontent.com/profesorfaco/infografia/main/thumbnails/hipopotamo.jpg",
+                                descripcion: "un pequeño caballo de río.",
+                                url: "https://hipopotamo-pigmeo.github.io/final",
+                            },
+                            {
+                                especie: "Panda rojo",
+                                imagen: "https://raw.githubusercontent.com/profesorfaco/infografia/main/thumbnails/panda.jpg",
+                                descripcion: "el animal más lindo del mundo.",
+                                url: "https://infografia-panda-rojo.github.io/final",
+                            },
+                            {
+                                especie: "Lemur de cola anillada",
+                                imagen: "https://raw.githubusercontent.com/profesorfaco/infografia/main/thumbnails/lemur.jpg",
+                                descripcion: "el zorrillo de Madagascar.",
+                                url: "https://lemur-cola-anillada.github.io/final",
+                            },
+                            {
+                                especie: "Orangután de borneo",
+                                imagen: "https://raw.githubusercontent.com/profesorfaco/infografia/main/thumbnails/orangutan.jpg",
+                                descripcion: "el hombre del bosque.",
+                                url: "https://orangutan-borneo-uc.github.io/final",
+                            },
+                            { especie: "Oso malayo", imagen: "https://raw.githubusercontent.com/profesorfaco/infografia/main/thumbnails/oso.jpg", descripcion: "el oso más pequeño.", url: "https://oso-malayo.github.io/avance" },
+                            {
+                                especie: "Siamang",
+                                imagen: "https://raw.githubusercontent.com/profesorfaco/infografia/main/thumbnails/siamang.jpg",
+                                descripcion: "el acróbata de la selva.",
+                                url: "https://siamang-infografia.github.io/final",
+                            },
+                            {
+                                especie: "Tapir amazónico",
+                                imagen: "https://raw.githubusercontent.com/profesorfaco/infografia/main/thumbnails/tapir.jpg",
+                                descripcion: "el jardinero de la selva.",
+                                url: "https://tapir-amazonico.github.io/final",
+                            },
+                            {
+                                especie: "Tigre de bengala",
+                                imagen: "https://raw.githubusercontent.com/profesorfaco/infografia/main/thumbnails/tigre.jpg",
+                                descripcion: "el felino más grande del mundo.",
+                                url: "https://tigre-de-bengala.github.io/final/",
+                            },
+                        ];
+                        datos.forEach((d) => {
+                            if (d.especie != "Hipopótamo pigmeo") {
                                 colegas.innerHTML +=
                                     '<div class="col-12 col-md-6 col-lg-4"><div class="row shadow-sm g-0 small align-items-center bg-white"><div class="col-3"><img loading="lazy" src="' +
-                                    d.imagen + '" alt="' +
+                                    d.imagen +
+                                    '" alt="' +
                                     d.especie +
                                     '" class="w-100"></div><div class="col-9 p-2"><em>' +
                                     d.especie +
@@ -544,49 +518,49 @@
                                     "</a></div></div></div>";
                             }
                         });
-               </script>
+                    </script>
+                </div>
             </div>
-         </div>
-      </aside>
-      <!--ESTE ES EL PIE DE PÁGINA-->
-      <footer class="bg-dark text-white-50">
-         <div class="container">
-            <div class="row">
-               <div class="col py-3">
-                  <p class="text-center small">
-                     Esta obra está bajo una <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" class="link-light">Licencia Creative Commons Atribución-NoComercial-CompartirIgual 4.0 Internacional</a>.
-                  </p>
-               </div>
+        </aside>
+        <!--ESTE ES EL PIE DE PÁGINA-->
+        <footer class="bg-dark text-white-50">
+            <div class="container">
+                <div class="row">
+                    <div class="col py-3">
+                        <p class="text-center small">
+                            Esta obra está bajo una <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" class="link-light">Licencia Creative Commons Atribución-NoComercial-CompartirIgual 4.0 Internacional</a>.
+                        </p>
+                    </div>
+                </div>
             </div>
-         </div>
-      </footer>
-      <!--BOOTSTRAP OFRECE SU PROPIA BIBLIOTECA DE JAVASCRIPT-->
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-      <!--CON ESTE CÓDIGO DE ACTIVA EL POPOVER SOBRE SU NOMBRE-->
-      <script>
-         var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
-         var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
-             return new bootstrap.Popover(popoverTriggerEl, { html: true });
-         });
-      </script>
-      <!--LO QUE SIGUE ES OTRA BIBLIOTECA DE JAVASCRIPT-->
-      <script src="https://unpkg.com/image-compare-viewer/dist/image-compare-viewer.min.js"></script>
-      <!--LO QUE SIGUE ES LA CONFIGURACIÓN DE LA COMPARACIÓN DE IMÁGENES-->
-      <script>
-         const element = document.querySelector("#yuxtaposicion");
-         const options = {
-             controlColor: "#fff",
-             controlShadow: true,
-             addCircle: true,
-             addCircleBlur: true,
-             showLabels: false,
-             labelOptions: {
-                 before: "Cara",
-                 after: "Sello",
-                 onHover: false,
-             },
-         };
-         const viewer = new ImageCompare(element, options).mount();
-      </script>
-   </body>
+        </footer>
+        <!--BOOTSTRAP OFRECE SU PROPIA BIBLIOTECA DE JAVASCRIPT-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        <!--CON ESTE CÓDIGO DE ACTIVA EL POPOVER SOBRE SU NOMBRE-->
+        <script>
+            var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
+            var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+                return new bootstrap.Popover(popoverTriggerEl, { html: true });
+            });
+        </script>
+        <!--LO QUE SIGUE ES OTRA BIBLIOTECA DE JAVASCRIPT-->
+        <script src="https://unpkg.com/image-compare-viewer/dist/image-compare-viewer.min.js"></script>
+        <!--LO QUE SIGUE ES LA CONFIGURACIÓN DE LA COMPARACIÓN DE IMÁGENES-->
+        <script>
+            const element = document.querySelector("#yuxtaposicion");
+            const options = {
+                controlColor: "#fff",
+                controlShadow: true,
+                addCircle: true,
+                addCircleBlur: true,
+                showLabels: false,
+                labelOptions: {
+                    before: "Hipopótamo",
+                    after: "Estructura",
+                    onHover: false,
+                },
+            };
+            const viewer = new ImageCompare(element, options).mount();
+        </script>
+    </body>
 </html>

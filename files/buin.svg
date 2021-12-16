@@ -8,10 +8,10 @@
 	.st2{fill:#D9D3B9;}
 	.st3{fill:none;}
 	.st4{fill:#1D1D1B;}
-	.st5{font-family:'BarlowSemiCondensed-SemiBold';}
+	.st5{font-family:"Roboto", sans-serif;}
 	.st6{font-size:7.5px;}
-	.st7{font-family:'BarlowSemiCondensed-Light';}
-	.st8{font-family:'BarlowSemiCondensed-LightItalic';}
+	.st7{font-family:"Roboto", sans-serif}
+	.st8{font-family:"Roboto", sans-serif}
 	.st9{font-size:6.5px;}
 	.st10{fill:#A29F9E;}
 	.st11{fill:#FFFFFF;}
